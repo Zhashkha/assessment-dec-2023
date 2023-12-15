@@ -6,7 +6,7 @@ import {
   ErrorImageText
 } from "../../shared-components/error-image/error-image.styles";
 import ErrorBoundaryFallbackImage from "../../shared-components/error-image/error-image.png";
-import CustomButton from "../custom-button/custom-button.component";
+import CustomButton from "../../shared-components/custom-button/custom-button.component";
 
 const ErrorBoundaryFallback = ({
   error,
@@ -16,9 +16,7 @@ const ErrorBoundaryFallback = ({
     <ErrorImageOverlay>
       <ErrorImageContainer imageUrl={ErrorBoundaryFallbackImage} />
       <ErrorImageText>Sorry, this page is missed.</ErrorImageText>
-      <CustomButton onClick={resetErrorBoundary}>
-        Try again
-      </CustomButton>
+      <CustomButton onClick={resetErrorBoundary}>Try again</CustomButton>
     </ErrorImageOverlay>
   );
 };
