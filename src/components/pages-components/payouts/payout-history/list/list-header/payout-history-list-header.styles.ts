@@ -22,4 +22,22 @@ export const HeaderText = styled.span`
   letter-spacing: ${(props) => props.theme.captionLetterSpacing};
   line-height: ${(props) => props.theme.captionLineHeight};
   position: relative;
+
+  @media (max-width: 768px) {
+    &.headerUsername {
+      display: none;
+    }
+  }
+
+  @media (max-width: 425px) {
+    &.headerStatus {
+      display: none;
+    }
+  }
+
+  @media (max-width: 320px) {
+    &.headerAmount {
+      display: none;
+    }
+  }
 `;

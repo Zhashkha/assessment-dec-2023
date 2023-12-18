@@ -7,4 +7,8 @@ export const PayoutsContainer = styled.div`
   justify-content: flex-start;
   padding: 35px 51px;
   background-color: transparent;
+
+  @media (max-width: 600px) {
+    padding: 0;
+  }
 `;

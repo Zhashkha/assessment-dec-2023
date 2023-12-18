@@ -5,11 +5,12 @@ export const PayoutHistoryListItemContainer = styled.div<{ parity: boolean }>`
   height: 48px;
   width: 100%;
   flex: 0 0 auto;
+  align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* flex-wrap: wrap; */
   gap: 10px;
-  align-self: stretch;
   padding: 24px;
   position: relative;
   background-color: ${(props) =>
@@ -41,10 +42,18 @@ export const UsernameText = styled.span`
   font-weight: ${(props) => props.theme.baseFontWeight};
   letter-spacing: ${(props) => props.theme.baseLetterSpacing};
   line-height: ${(props) => props.theme.baseLineHeight};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const StatusContainer = styled.div`
   width: 136px;
+
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 export const StatusText = styled.span<{ status: PayoutStatus }>`
@@ -78,4 +87,8 @@ export const AmountText = styled.span`
   font-weight: ${(props) => props.theme.baseFontWeight};
   letter-spacing: ${(props) => props.theme.baseLetterSpacing};
   line-height: ${(props) => props.theme.baseLineHeight};
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 `;

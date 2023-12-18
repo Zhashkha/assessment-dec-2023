@@ -7,9 +7,9 @@ const PayoutHistoryListHeader: React.FC = () => {
   return (
     <PayoutHistoryListHeaderContainer>
       <HeaderText>Date &amp; Time</HeaderText>
-      <HeaderText>Username</HeaderText>
-      <HeaderText>Status</HeaderText>
-      <HeaderText>Amount</HeaderText>
+      <HeaderText className="headerUsername">Username</HeaderText>
+      <HeaderText className="headerStatus">Status</HeaderText>
+      <HeaderText className="headerAmount">Amount</HeaderText>
     </PayoutHistoryListHeaderContainer>
   );
 };
