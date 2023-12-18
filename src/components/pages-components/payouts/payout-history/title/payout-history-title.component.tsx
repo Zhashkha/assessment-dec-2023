@@ -1,9 +1,14 @@
-import { PayoutHistoryTitleContainer } from "./payout-history-title.component.styles";
+import {
+  PayoutHistoryTitleContainer,
+  PayoutHistoryTag,
+  PayoutHistoryText
+} from "./payout-history-title.styles";
 
 const PayoutHistoryTitle: React.FC = () => {
   return (
     <PayoutHistoryTitleContainer>
-      Payout history title component
+      <PayoutHistoryTag />
+      <PayoutHistoryText>Payout History</PayoutHistoryText>
     </PayoutHistoryTitleContainer>
   );
 };

@@ -1,7 +1,7 @@
-import { PayoutsTitleContainer } from "./payouts-title.component.styles";
+import { PayoutsTitleContainer } from "./payouts-title.styles";
 
 const PayoutsTitle: React.FC = () => {
-  return <PayoutsTitleContainer>Payouts title component</PayoutsTitleContainer>;
+  return <PayoutsTitleContainer>Payouts</PayoutsTitleContainer>;
 };
 
 export default PayoutsTitle;

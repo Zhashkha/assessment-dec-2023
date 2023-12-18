@@ -1,12 +1,12 @@
-import { PayoutHistoryContainer } from "./payout-history.component.styles";
+import { PayoutHistoryContainer } from "./payout-history.styles";
 import PayoutHistoryTitle from "../title/payout-history-title.component";
-import List from "../../../../shared-components/list/_container/list.component";
+import PayoutHistoryList from "../list/_container/payout-history-list.component";
 
 const PayoutHistory: React.FC = () => {
   return (
     <PayoutHistoryContainer>
       <PayoutHistoryTitle />
-      <List />
+      <PayoutHistoryList />
     </PayoutHistoryContainer>
   );
 };

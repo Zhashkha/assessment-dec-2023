@@ -3,7 +3,8 @@ import { FallbackProps } from "react-error-boundary";
 import {
   ErrorImageOverlay,
   ErrorImageContainer,
-  ErrorImageText
+  ErrorImageText,
+  ErrorButtonContainer
 } from "../../shared-components/error-image/error-image.styles";
 import ErrorBoundaryFallbackImage from "../../shared-components/error-image/error-image.png";
 import CustomButton from "../../shared-components/custom-button/custom-button.component";
@@ -16,7 +17,9 @@ const ErrorBoundaryFallback = ({
     <ErrorImageOverlay>
       <ErrorImageContainer imageUrl={ErrorBoundaryFallbackImage} />
       <ErrorImageText>Sorry, this page is missed.</ErrorImageText>
-      <CustomButton onClick={resetErrorBoundary}>Try again</CustomButton>
+      <ErrorButtonContainer>
+        <CustomButton onClick={resetErrorBoundary}>Try again</CustomButton>
+      </ErrorButtonContainer>
     </ErrorImageOverlay>
   );
 };
