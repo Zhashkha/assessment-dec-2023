@@ -1,23 +1,37 @@
+import { useSelector } from "react-redux";
+
 import { PayoutHistoryListContainer } from "./payout-history-list.styles";
+import PayoutHistoryListSearch from "../../search/search.component";
 import PayoutHistoryListHeader from "../list-header/payout-history-list-header.component";
 import PayoutHistoryListItem from "../list-item/payout-history-list-item.component";
-
-import PAYOUT_DATA from "../../data";
+import {
+  selectPayoutsByPage,
+  selectPayoutsIsLoading,
+  selectPayoutsPageIndex
+} from "../../../../../../state-management/redux/payouts/payouts.selector";
+import { PayoutDataItem } from "../../../../../../state-management/redux/payouts/payouts.data-types";
+import Spinner from "../../../../../general-components/spinner/spinner.component";
 
 const PayoutHistoryList: React.FC = () => {
-  const { data: payouts } = PAYOUT_DATA;
+  const loading = useSelector(selectPayoutsIsLoading);
+  const pageIndex: number = useSelector(selectPayoutsPageIndex);
+  const payouts: PayoutDataItem[] = useSelector(selectPayoutsByPage(pageIndex));
 
   return (
     <PayoutHistoryListContainer>
+      <PayoutHistoryListSearch />
       <PayoutHistoryListHeader />
-      {payouts &&
+      {loading ? (
+        <Spinner />
+      ) : (
         payouts.map((payoutItem, index) => (
           <PayoutHistoryListItem
             key={payoutItem.id}
             parity={index % 2 === 0}
             data={payoutItem}
           />
-        ))}
+        ))
+      )}
     </PayoutHistoryListContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { PayoutDataItem } from "../../data";
+import { PayoutDataItem } from "../../../../../../state-management/redux/payouts/payouts.data-types"; 
 import {
   AmountText,
   DateAndTimeText,

@@ -7,6 +7,7 @@ export const PayoutHistoryListHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   align-self: stretch;
+  margin-top: 20px;
   padding: 16px 24px;
   position: relative;
   background-color: ${(props) => props.theme.colourBackgroundLight};

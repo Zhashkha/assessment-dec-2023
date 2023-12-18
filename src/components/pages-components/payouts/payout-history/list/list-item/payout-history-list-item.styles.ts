@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PayoutStatus } from "../../data";
+import { PayoutStatus } from "../../../../../../state-management/redux/payouts/payouts.data-types"; 
 
 export const PayoutHistoryListItemContainer = styled.div<{ parity: boolean }>`
   height: 48px;
@@ -9,7 +9,6 @@ export const PayoutHistoryListItemContainer = styled.div<{ parity: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
   gap: 10px;
   padding: 24px;
   position: relative;
