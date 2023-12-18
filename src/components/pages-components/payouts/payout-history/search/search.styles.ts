@@ -18,5 +18,3 @@ export const SearchInput = styled.input`
   font-family: "Open Sans Condensed";
   font-weight: bolder;
 `;
-
-export const SearchButtonContainer = styled.div``;
