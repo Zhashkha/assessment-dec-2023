@@ -5,7 +5,7 @@ export const PayoutHistoryListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: ${(props) => props.theme.colourNeutral01};
+  background-color: ${(props) => props.theme.colourBackgroundLight};
   margin-top: 18px;
   padding: 0px;
   position: relative;

@@ -14,20 +14,28 @@ import {
   fetchPayoutsStart,
   setPayoutsPage
 } from "../../../../../state-management/redux/payouts/payouts.action";
+import { useIsMount } from "../../../../../utils/customHooks";
 
 const PayoutHistory: React.FC = () => {
   const filter = useSelector(selectPayoutsFilter);
   const { pagesCount, pageIndex } = useSelector(selectPayoutsPagination);
   const isPageFetched = useSelector(selectIsPageFetched(pageIndex));
-
+  const isMount = useIsMount();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isMount) {
+      return;
+    }
+    
     dispatch(clearPayouts());
     dispatch(setPayoutsPage(1));
     dispatch(fetchPayoutsStart(1, filter));
-  }, [filter, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
+  // TODO: nullify fetched pages after items per page is changes
+  
   return (
     <PayoutHistoryContainer>
       <PayoutHistoryTitle />
