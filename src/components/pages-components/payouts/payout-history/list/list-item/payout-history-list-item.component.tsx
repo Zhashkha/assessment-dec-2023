@@ -9,7 +9,7 @@ import {
 } from "./payout-history-list-item.styles";
 
 interface PayoutHistoryListItemProps {
-  parity: boolean;
+  parity: number;
   data: PayoutDataItem;
 }
 

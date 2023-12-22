@@ -27,7 +27,7 @@ const PayoutHistoryList: React.FC = () => {
         payouts.map((payoutItem, index) => (
           <PayoutHistoryListItem
             key={payoutItem.id}
-            parity={index % 2 === 0}
+            parity={index % 2}
             data={payoutItem}
           />
         ))
