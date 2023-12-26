@@ -13,7 +13,7 @@ import { PayoutDataItem } from "../../../../../../state-management/redux/payouts
 import Spinner from "../../../../../general-components/spinner/spinner.component";
 
 const PayoutHistoryList: React.FC = () => {
-  const loading = useSelector(selectPayoutsIsLoading);
+  const isLoading: boolean = useSelector(selectPayoutsIsLoading);
   const pageIndex: number = useSelector(selectPayoutsPageIndex);
   const payouts: PayoutDataItem[] = useSelector(selectPayoutsByPage(pageIndex));
 
@@ -21,9 +21,10 @@ const PayoutHistoryList: React.FC = () => {
     <PayoutHistoryListContainer>
       <PayoutHistoryListSearch />
       <PayoutHistoryListHeader />
-      {loading ? (
+      {isLoading ? (
         <Spinner />
       ) : (
+        payouts &&
         payouts.map((payoutItem, index) => (
           <PayoutHistoryListItem
             key={payoutItem.id}

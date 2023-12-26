@@ -82,9 +82,13 @@ const formatDateAndTime = (dateAndTime: string, status: string): string => {
 
 export const getPayoutsNormalized = (
   pageIndex: number,
-  payoutData: PayoutDataRaw
+  payoutData: PayoutDataRaw,
+  isFilterApplied: boolean = false
 ): GetPayoutsNormalized => {
   let payouts: PayoutDataItem[] = [];
+  let data: { [key: number]: PayoutDataItem[] } = {
+    [pageIndex]: payouts
+  };
 
   if (payoutData.data) {
     payouts = payoutData.data.map((item) => {
@@ -101,12 +105,28 @@ export const getPayoutsNormalized = (
         amount: item.value
       };
     });
+
+    if (isFilterApplied) {
+      const {
+        metadata: { limit: itemsPerPage, totalCount: itemsCount }
+      } = payoutData;
+      const pagesCount = Math.ceil(itemsCount / itemsPerPage);
+
+      for (let page = 1; page <= pagesCount; page++) {
+        data[page] = payouts.slice(
+          itemsPerPage * (page - 1),
+          itemsPerPage * page
+        );
+      }
+    } else {
+      data = {
+        [pageIndex]: payouts
+      };
+    }
   }
 
   return {
     metadata: payoutData.metadata,
-    data: {
-      [pageIndex]: payouts
-    }
+    data
   };
 };

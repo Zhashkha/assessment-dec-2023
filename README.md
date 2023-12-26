@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# Tech Test Brief
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The application should closely align with the designs found in this [Figma file](https://www.figma.com/file/hGBI3zpyHia5yrWsgeMP3K/Untitled?node-id=0%3A1&mode=dev).
 
-In the project directory, you can run:
+## Technical Requirements
 
-### `npm start`
+### General
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- The application must be developed using TypeScript.
+- Utilise Styled Components for styling the components in accordance with the Figma designs.
+- We often find the need to make slight alterations to the designs - please use your best judgement to make the necessary adjustments, particularly adding a column for usernames.
+- Implement a search functionality that allows for searching payouts based on various criteria, including username. Please see the API Integration section for more details, and as above tweak the designs as you see fit.
+- Implement pagination functionality that allows for navigating through the payouts. Please see the API Integration section for more details, and as above tweak the designs as you see fit.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### API Integration
 
-### `npm test`
+You will be integrating with an existing API. Here are the details of the endpoints you will need to interact with:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Payouts Endpoint**
 
-### `npm run build`
+   **Endpoint:** `https://theseus-staging.lithium.ventures/api/v1/analytics/tech-test/payouts`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   **Method:** GET
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   **Description:** This endpoint retrieves a list of payouts. Each payout object contains the following fields:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - `dateAndTime`: A string representing the date and time of the payout.
+   - `status`: A string indicating the status of the payout (Pending or Completed).
+   - `value`: A string representing the value of the payout.
+   - `username`: A string representing the username associated with the payout.
 
-### `npm run eject`
+    This endpoint also includes the following metadata:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   `"metadata": {"page": number, "limit": number, "totalCount": number}`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   You can attach the following query parameters to the endpoint to facilitate pagination:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   page: The page number to retrieve.
+   limit: The number of payouts to retrieve per page.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. **Search Endpoint**
 
-## Learn More
+   **Endpoint:** `https://theseus-staging.lithium.ventures/api/v1/analytics/tech-test/search?query=SEARCH_TERM`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   **Method:** GET
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   **Description:** This endpoint allows for searching payouts by username. Implement a functionality that facilitates user search with a keen focus on optimizing the user experience whilst considering performance.
+
+
+## Evaluation Criteria
+
+- Adherence to the design as specified in the Figma file.
+- Proper usage of TypeScript and Styled Components.
+- Attention to detail in implementing various functionalities.
+- Optimizations implemented to enhance the user experience.

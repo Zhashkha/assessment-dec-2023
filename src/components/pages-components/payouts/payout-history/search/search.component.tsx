@@ -11,15 +11,11 @@ import {
 } from "../../../../../utils/customHooks";
 
 const PayoutHistoryListSearch = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const { username } = useSelector(selectPayoutsFilter);
   const debouncedSearchTerm = useDebouncedValue(searchValue, 500);
   const dispatch = useDispatch();
   const isMount = useIsMount();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
 
   useEffect(() => {
     setSearchValue(username);
@@ -33,10 +29,20 @@ const PayoutHistoryListSearch = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchTerm]);
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSubmit = (value: string) => {
+    setSearchValue(value);
+  };
+
   return (
     <SearchContainer>
       <SearchInput value={searchValue} onChange={handleChange} />
-      <CustomButton>Search</CustomButton>
+      <CustomButton onClick={() => handleSubmit(debouncedSearchTerm)}>
+        Search
+      </CustomButton>
     </SearchContainer>
   );
 };

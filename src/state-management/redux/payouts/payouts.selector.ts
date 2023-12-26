@@ -15,16 +15,6 @@ export const selectPayoutsByPage = (page: number) =>
 export const selectIsPageFetched = (page: number) =>
   createSelector([selectPayouts], (payouts) => !!payouts[page]);
 
-export const selectPayoutsFilter = createSelector(
-  [selectPayoutsReducer],
-  (payoutsReducer) => payoutsReducer.filter
-);
-
-export const selectPayoutsIsLoading = createSelector(
-  [selectPayoutsReducer],
-  (payoutsReducer) => payoutsReducer.isLoading
-);
-
 export const selectPayoutsPagination = createSelector(
   [selectPayoutsReducer],
   (payoutsReducer) => payoutsReducer.pagination
@@ -33,4 +23,29 @@ export const selectPayoutsPagination = createSelector(
 export const selectPayoutsPageIndex = createSelector(
   [selectPayoutsPagination],
   (payoutsPagination) => payoutsPagination.pageIndex
+);
+
+export const selectPayoutsIsItemsPerPageChanged = createSelector(
+  [selectPayoutsReducer],
+  (payoutsReducer) => payoutsReducer.isItemsPerPageChanged
+);
+
+export const selectPayoutsFilter = createSelector(
+  [selectPayoutsReducer],
+  (payoutsReducer) => payoutsReducer.filter
+);
+
+export const selectPayoutsIsFilterChanged = createSelector(
+  [selectPayoutsReducer],
+  (payoutsReducer) => payoutsReducer.isFilterChanged
+);
+
+export const selectPayoutsIsLoading = createSelector(
+  [selectPayoutsReducer],
+  (payoutsReducer) => payoutsReducer.isLoading
+);
+
+export const selectPayoutsIsFirstRun = createSelector(
+  [selectPayoutsReducer],
+  (payoutsReducer) => payoutsReducer.isFirstRun
 );

@@ -15,7 +15,7 @@ import {
 } from "./payouts.data-types";
 
 function* fetchPayoutsStartAsync({
-  payload: { page: pageIndex, filter }
+  payload: { page: pageIndex, itemsPerPage, filter }
 }: AnyAction) {
   try {
     if (filter && filter.username) {
@@ -26,20 +26,24 @@ function* fetchPayoutsStartAsync({
 
       yield put(
         fetchPayoutsSuccess(
-          getPayoutsNormalized(1, {
-            metadata: {
-              page: 1,
-              limit: results.length,
-              totalCount: results.length
+          getPayoutsNormalized(
+            pageIndex,
+            {
+              metadata: {
+                page: pageIndex,
+                limit: itemsPerPage,
+                totalCount: results.length
+              },
+              data: results
             },
-            data: results
-          })
+            true
+          )
         )
       );
     } else {
       const { data: results }: { data: PayoutDataRaw } = yield call(
         axios.get,
-        PAYOUTS_FETCH_API
+        `${PAYOUTS_FETCH_API}?page=${pageIndex}&limit=${itemsPerPage}`
       );
 
       yield put(fetchPayoutsSuccess(getPayoutsNormalized(pageIndex, results)));
