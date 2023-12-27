@@ -22,25 +22,17 @@ export const fetchPayoutsFailed = (error: Error) =>
 export const setPayoutsPage = (page: number) =>
   createAction(PAYOUTS_ACTION_TYPES.SET_PAYOUTS_PAGE, page);
 
-export const setPayoutsItemsPerPage = (itemsPerPage: number) =>
-  createAction(PAYOUTS_ACTION_TYPES.SET_PAYOUTS_PAGE, itemsPerPage);
-
-export const setPayoutsIsItemsPerPageChanged = (
-  isItemsPerPageChanged: boolean
-) =>
+export const setPayoutsIsPageChangedFromUI = (isPageChangedFromUI: boolean) =>
   createAction(
-    PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_ITEMS_PER_PAGE_CHANGED,
-    isItemsPerPageChanged
+    PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_PAGE_CHANGED_FROM_UI,
+    isPageChangedFromUI
   );
+
+export const setPayoutsItemsPerPage = (itemsPerPage: number) =>
+  createAction(PAYOUTS_ACTION_TYPES.SET_PAYOUTS_ITEMS_PER_PAGE, itemsPerPage);
 
 export const setPayoutsFilter = (filter: FilterPayout) =>
   createAction(PAYOUTS_ACTION_TYPES.SET_PAYOUTS_FILTER, filter);
-
-export const setPayoutsIsFilterChanged = (isFilterChanged: boolean) =>
-  createAction(
-    PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_FILTER_CHANGED,
-    isFilterChanged
-  );
 
 export const clearPayouts = () =>
   createAction(PAYOUTS_ACTION_TYPES.CLEAR_PAYOUTS);

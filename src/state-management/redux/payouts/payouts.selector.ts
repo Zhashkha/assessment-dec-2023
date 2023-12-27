@@ -25,19 +25,19 @@ export const selectPayoutsPageIndex = createSelector(
   (payoutsPagination) => payoutsPagination.pageIndex
 );
 
-export const selectPayoutsIsItemsPerPageChanged = createSelector(
+export const selectPayoutsIsPageChangedFromUI = createSelector(
   [selectPayoutsReducer],
-  (payoutsReducer) => payoutsReducer.isItemsPerPageChanged
+  (payoutsReducer) => payoutsReducer.isPageChangedFromUI
+);
+
+export const selectPayoutsItemsPerPage = createSelector(
+  [selectPayoutsPagination],
+  (payoutsPagination) => payoutsPagination.itemsPerPage
 );
 
 export const selectPayoutsFilter = createSelector(
   [selectPayoutsReducer],
   (payoutsReducer) => payoutsReducer.filter
-);
-
-export const selectPayoutsIsFilterChanged = createSelector(
-  [selectPayoutsReducer],
-  (payoutsReducer) => payoutsReducer.isFilterChanged
 );
 
 export const selectPayoutsIsLoading = createSelector(

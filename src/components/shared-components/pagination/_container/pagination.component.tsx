@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { PaginationContainer, PaginationPageNumber } from "./pagination.styles";
 
 interface PaginationProps {
@@ -16,17 +17,17 @@ const Pagination: React.FC<PaginationProps> = ({
     <PaginationContainer>
       {pages.map((page) => {
         return (
-          <>
+          <Fragment key={page}>
             {page !== currentPage ? (
-              <PaginationPageNumber key={page} onClick={() => setPage(page)}>
+              <PaginationPageNumber onClick={() => setPage(page)}>
                 {page}
               </PaginationPageNumber>
             ) : (
-              <PaginationPageNumber key={page} onClick={() => {}}>
+              <PaginationPageNumber onClick={() => {}}>
                 {page}
               </PaginationPageNumber>
             )}
-          </>
+          </Fragment>
         );
       })}
     </PaginationContainer>

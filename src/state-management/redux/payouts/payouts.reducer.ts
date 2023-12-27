@@ -18,9 +18,8 @@ export type PayoutsReducer = {
     status: string;
   };
   isLoading: boolean;
+  isPageChangedFromUI: boolean;
   isFirstRun: boolean;
-  isFilterChanged: boolean;
-  isItemsPerPageChanged: boolean;
   error: Error | null;
 };
 
@@ -37,9 +36,8 @@ export const PAYOUTS_INITIAL_STATE: PayoutsReducer = {
     status: ""
   },
   isLoading: false,
+  isPageChangedFromUI: true,
   isFirstRun: true,
-  isFilterChanged: false,
-  isItemsPerPageChanged: false,
   error: null
 };
 
@@ -85,25 +83,20 @@ export const payoutsReducer = (
         ...state,
         pagination: { ...state.pagination, pageIndex: payload }
       };
+    case PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_PAGE_CHANGED_FROM_UI:
+      return {
+        ...state,
+        isPageChangedFromUI: payload
+      };
     case PAYOUTS_ACTION_TYPES.SET_PAYOUTS_ITEMS_PER_PAGE:
       return {
         ...state,
         pagination: { ...state.pagination, itemsPerPage: payload }
       };
-    case PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_ITEMS_PER_PAGE_CHANGED:
-      return {
-        ...state,
-        isItemsPerPageChanged: payload
-      };
     case PAYOUTS_ACTION_TYPES.SET_PAYOUTS_FILTER:
       return {
         ...state,
         filter: { ...state.filter, ...payload }
-      };
-    case PAYOUTS_ACTION_TYPES.SET_PAYOUTS_IS_FILTER_CHANGED:
-      return {
-        ...state,
-        isFilterChanged: payload
       };
     case PAYOUTS_ACTION_TYPES.CLEAR_PAYOUTS:
       return {

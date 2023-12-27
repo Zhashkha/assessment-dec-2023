@@ -4,20 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { PayoutHistoryContainer } from "./payout-history.styles";
 import PayoutHistoryTitle from "../title/payout-history-title.component";
 import PayoutHistoryList from "../list/_container/payout-history-list.component";
-import Pagination from "../../../../shared-components/pagination/pagination.component";
+import Pagination from "../../../../shared-components/pagination/_container/pagination.component";
 import {
   selectIsPageFetched,
   selectPayoutsFilter,
-  selectPayoutsIsFilterChanged,
+  selectPayoutsPagination,
   selectPayoutsIsFirstRun,
-  selectPayoutsIsItemsPerPageChanged,
-  selectPayoutsPagination
+  selectPayoutsIsPageChangedFromUI
 } from "../../../../../state-management/redux/payouts/payouts.selector";
 import {
   clearPayouts,
   fetchPayoutsStart,
-  setPayoutsIsFilterChanged,
-  setPayoutsIsItemsPerPageChanged,
+  setPayoutsIsPageChangedFromUI,
   setPayoutsPage
 } from "../../../../../state-management/redux/payouts/payouts.action";
 import { useIsMount } from "../../../../../utils/customHooks";
@@ -28,9 +26,8 @@ const PayoutHistory: React.FC = () => {
     selectPayoutsPagination
   );
   const isPageFetched = useSelector(selectIsPageFetched(pageIndex));
-  const isItemsPerPageChanged = useSelector(selectPayoutsIsItemsPerPageChanged);
+  const isPageChangedFromUI = useSelector(selectPayoutsIsPageChangedFromUI);
   const filter = useSelector(selectPayoutsFilter);
-  const isFilterChanged = useSelector(selectPayoutsIsFilterChanged);
   const isMount = useIsMount();
   const dispatch = useDispatch();
 
@@ -49,16 +46,8 @@ const PayoutHistory: React.FC = () => {
       return;
     }
 
-    if (!isPageFetched && !isFilterChanged && !isItemsPerPageChanged) {
+    if (!isPageFetched && isPageChangedFromUI) {
       dispatch(fetchPayoutsStart(pageIndex, itemsPerPage, filter));
-    }
-
-    if (isItemsPerPageChanged) {
-      dispatch(setPayoutsIsItemsPerPageChanged(false));
-    }
-
-    if (isFilterChanged) {
-      dispatch(setPayoutsIsFilterChanged(false));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex]);
@@ -68,7 +57,7 @@ const PayoutHistory: React.FC = () => {
       return;
     }
 
-    dispatch(setPayoutsIsItemsPerPageChanged(true));
+    dispatch(setPayoutsIsPageChangedFromUI(false));
     dispatch(clearPayouts());
     dispatch(setPayoutsPage(1));
     dispatch(fetchPayoutsStart(1, itemsPerPage, filter));
@@ -80,7 +69,7 @@ const PayoutHistory: React.FC = () => {
       return;
     }
 
-    dispatch(setPayoutsIsFilterChanged(true));
+    dispatch(setPayoutsIsPageChangedFromUI(false));
     dispatch(clearPayouts());
     dispatch(setPayoutsPage(1));
     dispatch(fetchPayoutsStart(1, itemsPerPage, filter));
@@ -88,6 +77,7 @@ const PayoutHistory: React.FC = () => {
   }, [filter]);
 
   const handleSetPage = (pageIndex: number) => {
+    dispatch(setPayoutsIsPageChangedFromUI(true));
     dispatch(setPayoutsPage(pageIndex));
   };
 
