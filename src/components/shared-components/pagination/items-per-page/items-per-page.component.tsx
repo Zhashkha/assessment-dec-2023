@@ -1,7 +1,7 @@
 import {
   PaginationItemsPerPageContainer,
-  PaginationItemsPerPageInput,
-  PaginationItemsPerPageInputItem,
+  PaginationItemsPerPageDropdown,
+  PaginationItemsPerPageDropdownOption,
   PaginationItemsPerPageLabel
 } from "./items-per-page.styles";
 
@@ -18,7 +18,7 @@ const PaginationItemsPerPage: React.FC<PaginationItemsPerPageProps> = ({
   currentValue,
   setItemsPerPage
 }) => {
-  const inputValues = itemsPerPageValues.slice().sort((a, b) => a - b);
+  const optionValues = itemsPerPageValues.slice().sort((a, b) => a - b);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(parseInt(event.target.value));
@@ -27,22 +27,22 @@ const PaginationItemsPerPage: React.FC<PaginationItemsPerPageProps> = ({
   return (
     <PaginationItemsPerPageContainer>
       <PaginationItemsPerPageLabel>{label}</PaginationItemsPerPageLabel>
-      <PaginationItemsPerPageInput
+      <PaginationItemsPerPageDropdown
         defaultValue={currentValue}
         onChange={handleChange}
       >
-        {inputValues &&
-          inputValues.map((inputValue) => {
+        {optionValues &&
+          optionValues.map((optionValue) => {
             return (
-              <PaginationItemsPerPageInputItem
-                key={inputValue}
-                value={inputValue}
+              <PaginationItemsPerPageDropdownOption
+                key={optionValue}
+                value={optionValue}
               >
-                {inputValue}
-              </PaginationItemsPerPageInputItem>
+                {optionValue}
+              </PaginationItemsPerPageDropdownOption>
             );
           })}
-      </PaginationItemsPerPageInput>
+      </PaginationItemsPerPageDropdown>
     </PaginationItemsPerPageContainer>
   );
 };

@@ -3,6 +3,7 @@ import { CustomButtonContainer } from "./custom-button.styles";
 
 interface CustomButtonProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
+  inverted?: boolean;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ children, ...props }) => (

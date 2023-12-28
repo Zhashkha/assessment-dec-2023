@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
         return (
           <Fragment key={page}>
             {page !== currentPage ? (
-              <PaginationPageNumber onClick={() => setPage(page)}>
+              <PaginationPageNumber active onClick={() => setPage(page)}>
                 {page}
               </PaginationPageNumber>
             ) : (
