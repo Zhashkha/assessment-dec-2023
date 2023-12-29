@@ -14,6 +14,10 @@ const Pagination: React.FC<PaginationProps> = ({
   page: currentPage,
   setPage
 }) => {
+  if (pagesCount === 0) {
+    return <></>;
+  }
+
   const pages = getPages(currentPage, pagesCount);
 
   const isPreviousActive = currentPage !== 1;
@@ -21,6 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   let previousPage = 0;
   let dots = false;
+  
   return (
     <PaginationContainer>
       <PaginationPageNumber
