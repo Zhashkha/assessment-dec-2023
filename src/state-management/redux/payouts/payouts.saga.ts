@@ -3,7 +3,7 @@ import { all, takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
 
 import { fetchPayoutsSuccess, fetchPayoutsFailed } from "./payouts.action";
-import { PAYOUTS_ACTION_TYPES } from "./payouts.types";
+import { PAYOUTS_ACTION_TYPES } from "./payouts.action-types";
 import {
   PAYOUTS_FETCH_API,
   PAYOUTS_SEARCH_API
@@ -11,8 +11,8 @@ import {
 import {
   PayoutDataItemRaw,
   PayoutDataRaw,
-  getPayoutsNormalized
 } from "./payouts.data-types";
+import { getPayoutsNormalized } from "./payouts.data-functions";
 
 function* fetchPayoutsStartAsync({
   payload: { page: pageIndex, itemsPerPage, filter }

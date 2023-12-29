@@ -9,16 +9,16 @@ import {
 } from "./payout-history-list-item.styles";
 
 interface PayoutHistoryListItemProps {
-  parity: number;
+  $parity: boolean;
   data: PayoutDataItem;
 }
 
 const PayoutHistoryListItem: React.FC<PayoutHistoryListItemProps> = ({
-  parity,
+  $parity,
   data
 }) => {
   return (
-    <PayoutHistoryListItemContainer parity={parity}>
+    <PayoutHistoryListItemContainer $parity={$parity}>
       <DateAndTimeText>{data.dateAndTime}</DateAndTimeText>
       <UsernameText>{data.username}</UsernameText>
       <StatusContainer>

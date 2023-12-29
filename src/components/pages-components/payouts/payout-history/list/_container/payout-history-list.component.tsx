@@ -21,7 +21,7 @@ const PayoutHistoryList: React.FC = () => {
   const itemsPerPage: number = useSelector(selectPayoutsItemsPerPage);
   const payouts: PayoutDataItem[] = useSelector(selectPayoutsByPage(pageIndex));
   const dispatch = useDispatch();
-  
+
   const handleSetItemsPerPage = (itemsPerPage: number) => {
     dispatch(setPayoutsItemsPerPage(itemsPerPage));
   };
@@ -43,7 +43,7 @@ const PayoutHistoryList: React.FC = () => {
         payouts.map((payoutItem, index) => (
           <PayoutHistoryListItem
             key={payoutItem.id}
-            parity={index % 2}
+            $parity={index % 2 === 0}
             data={payoutItem}
           />
         ))

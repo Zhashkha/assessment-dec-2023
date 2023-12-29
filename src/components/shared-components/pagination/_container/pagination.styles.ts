@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 
 interface PaginationPageNumberProps {
-  active?: boolean;
+  $active?: boolean;
+  $isLabelLarge?: boolean;
 }
 
 export const PaginationContainer = styled.div`
@@ -31,12 +32,29 @@ const pageNumberStyleInactive = css`
   color: black;
 `;
 
+const pageNumberStyleLarge = css`
+  width: 90px;
+`;
+
 const getPageNumberStyle = (props: PaginationPageNumberProps) => {
-  return props.active ? pageNumberStyleActive : pageNumberStyleInactive;
+  const { $active, $isLabelLarge } = props;
+
+  let result = $active
+    ? `${pageNumberStyleActive}`
+    : `${pageNumberStyleInactive}`;
+
+  if ($isLabelLarge) {
+    result = `${result}${pageNumberStyleLarge}`;
+  }
+
+  return result;
 };
 
 export const PaginationPageNumber = styled.span<PaginationPageNumberProps>`
   height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   letter-spacing: 0.5px;
   line-height: 25px;
   font-size: 15px;

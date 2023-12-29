@@ -1,4 +1,4 @@
-import { PAYOUTS_ACTION_TYPES } from "./payouts.types";
+import { PAYOUTS_ACTION_TYPES } from "./payouts.action-types";
 import { createAction } from "../../../utils/redux";
 import { FilterPayout, GetPayoutsNormalized } from "./payouts.data-types";
 

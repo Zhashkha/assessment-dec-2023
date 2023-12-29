@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
 
-import { PAYOUTS_ACTION_TYPES } from "./payouts.types";
+import { PAYOUTS_ACTION_TYPES } from "./payouts.action-types";
 import { PayoutDataItem } from "./payouts.data-types";
 
 export type PayoutsReducer = {

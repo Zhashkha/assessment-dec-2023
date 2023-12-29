@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PayoutStatus } from "../../../../../../state-management/redux/payouts/payouts.data-types"; 
 
-export const PayoutHistoryListItemContainer = styled.div<{ parity: number }>`
+export const PayoutHistoryListItemContainer = styled.div<{ $parity: boolean }>`
   height: 48px;
   width: 100%;
   flex: 0 0 auto;
@@ -13,7 +13,7 @@ export const PayoutHistoryListItemContainer = styled.div<{ parity: number }>`
   padding: 24px;
   position: relative;
   background-color: ${(props) =>
-    props.parity
+    props.$parity
       ? props.theme.colourBackgroundDark
       : props.theme.colourBackgroundLight};
 `;
